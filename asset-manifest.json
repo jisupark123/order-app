@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/order-app/static/css/main.d99a84f7.css",
+    "main.js": "/order-app/static/js/main.16a94b69.js",
+    "static/media/meals.jpeg": "/order-app/static/media/meals.2971f633fc1382581cbf.jpeg",
+    "index.html": "/order-app/index.html",
+    "main.d99a84f7.css.map": "/order-app/static/css/main.d99a84f7.css.map",
+    "main.16a94b69.js.map": "/order-app/static/js/main.16a94b69.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d99a84f7.css",
+    "static/js/main.16a94b69.js"
+  ]
+}
