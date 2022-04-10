@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Cart from './components/Cart/Cart';
+import Header from './components/Layout/Header';
+import Meals from './components/Meals/Meals';
+import MyPage from './components/MyPage/MyPage';
+import CartProvider from './store/CartProvider';
+import WalletProvider from './store/WalletProvider';
 
 function App() {
+  const [cartIsShown, setCartIsShown] = useState(false);
+  const [myPageIsShown, setMyPageIsShown] = useState(false);
+  const showCartHandler = (pageName: 'Cart' | 'MyPage') => {
+    if (pageName === 'Cart') setCartIsShown(true);
+    else setMyPageIsShown(true);
+  };
+  const hideCartHandler = (pageName: 'Cart' | 'MyPage') => {
+    if (pageName === 'Cart') setCartIsShown(false);
+    else setMyPageIsShown(false);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <WalletProvider>
+      <CartProvider>
+        {cartIsShown && <Cart onClose={() => hideCartHandler('Cart')} />}
+        {myPageIsShown && <MyPage onClose={() => hideCartHandler('MyPage')} />}
+        <Header
+          onShowCart={() => showCartHandler('Cart')}
+          onShowMyPage={() => showCartHandler('MyPage')}
+        />
+        <main>
+          <Meals />
+        </main>
+      </CartProvider>
+    </WalletProvider>
   );
 }
 
